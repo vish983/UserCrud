@@ -1,7 +1,7 @@
 <div class="row mx-0 justify-content-center">
   <div class="col-12 col-lg-10 pt-5">
     <input [(ngModel)]="searchInput" (ngModelChange)="onChangeSearch($event)" type="search" placeholder="search by name or email" class="form-control mr-2 float-start" style="width: 350px;" />
-    <button (click)="addUser()" class="btn btn-primary mb-2 ml-3 float-end">Add new user</button>
+    <button data-bs-toggle="modal" data-bs-target="#addNewUser" class="btn btn-primary mb-2 ml-3 float-end">Add new user</button>
   </div>
   <div class="col-12 col-lg-10">
     <div class="table-responsive">
@@ -29,7 +29,7 @@
             <td>{{user.company.name}}</td>
             <td>{{user.address.city}}</td>
             <td>
-              <button class="btn btn-outline-info btn-sm">Edit</button>
+              <button data-bs-toggle="modal" data-bs-target="#editUser" (click)="loadData(i)" class="btn btn-outline-info btn-sm">Edit</button>
             </td>
             <td>
               <button class="btn btn-outline-danger btn-sm " (click)="deleteUser(i)">Delete</button>
@@ -40,3 +40,77 @@
     </div>
   </div>
 </div>
+
+<!-- add user modal -->
+<div class="modal fade" id="addNewUser" tabindex="-1" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+      </div>
+      <div class="modal-body row mx-0">
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.name" placeholder="Enter name" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.email" placeholder="Enter email" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.username" placeholder="Enter username" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.phone" placeholder="Enter phone" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.company" placeholder="Enter company" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="user.address" placeholder="Enter address" class="form-control mr-2 float-start"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser()">Create new user</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit user -->
+<div class="modal fade" id="editUser" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+      </div>
+      <div class="modal-body row mx-0">
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.name" placeholder="Enter name" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.email" placeholder="Enter email" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.username" placeholder="Enter username" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.phone" placeholder="Enter phone" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.company" placeholder="Enter company" class="form-control mr-2 float-start"/>
+        </div>
+        <div class="col-12 col-lg-6 my-2">
+          <input [(ngModel)]="editUser.address" placeholder="Enter address" class="form-control mr-2 float-start"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editUserhandler()">Edit user</button>
+      </div>
+    </div>
+  </div>
+</div>
+
