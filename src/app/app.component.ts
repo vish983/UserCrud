@@ -80,6 +80,11 @@ export class AppComponent implements OnInit {
 
     console.log(tempObj);
     this.userArray.push(tempObj);
+    Swal.fire(
+      'Added successfully!',
+      'User has been Added.',
+      'success'
+    );
   }
 
   loadData = (i) => {
@@ -99,10 +104,15 @@ export class AppComponent implements OnInit {
     this.userArray[foundIndex] = this.editUser;
     this.userArray[foundIndex].company = {
       name: this.editUser.company
-    }
+    };
     this.userArray[foundIndex].address = {
       city: this.editUser.address
-    }
+    };
+    Swal.fire(
+      'Updated successfully!',
+      'User details has been updated.',
+      'success'
+    );
   }
 
 }
